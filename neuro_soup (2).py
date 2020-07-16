@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[371]:
+# In[401]:
 
 
 import requests
@@ -13,7 +13,7 @@ import pandas as pd
 from htmldate import find_date
 
 
-# In[372]:
+# In[402]:
 
 
 user_agent_desktop = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '  'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 '  'Safari/537.36'
@@ -28,10 +28,10 @@ for user_agent in user_agents:
 
         headers = { 'User-Agent': user_agent}
         
-patterns=['tunisair','Tunisair','الخطوط التونسية',"Société tunisienne de l'air"]
+patterns=['topnet','Topnet','توب نات',"توبنات"]
 
 
-# In[373]:
+# In[403]:
 
 
 def step_one(url):
@@ -56,7 +56,7 @@ def step_one(url):
 
 
 
-# In[374]:
+# In[404]:
 
 
 def get_text_from_url(url):
@@ -68,7 +68,7 @@ def get_text_from_url(url):
     return text
 
 
-# In[375]:
+# In[405]:
 
 
 def resultat(soup):
@@ -97,24 +97,56 @@ def resultat(soup):
     return hyperlien,text,date
 
 
-# In[376]:
+# In[406]:
 
 
-urls=[
-'https://lapresse.tn/tag/tunisair/',
+urls=['https://www.jetcost.com/',
+      'https://www.tustex.com/',
+      'https://www.lemanager.tn/tag/topnet/',
+      'https://www.entreprises-magazine.com/tag/topnet/page/2/',
+      'https://www.entreprises-magazine.com/',
+      'https://thd.tn/tag/topnet/page/2/',
+      'https://thd.tn/',
+      'http://www.smarttunisia.tn/',
+      'https://www.techno.rn.tn/component/tags/tag/topnet.html',
+      'https://www.techno.rn.tn/',
+      'http://www.havasworldwide.tn/index.php/clients/itemlist/tag/TOPNET',
+      'https://tunivisions.net/tag/topnet/',
+'https://lapresse.tn/tag/topnet/',
 'https://lapresse.tn/',
-'https://www.leaders.com.tn/article/21774-tunisair',
-'http://www.webdo.tn/tag/tunisair/',
- 'https://www.tourmag.com/tags/tunisair/',
-'https://www.leconomistemaghrebin.com/tag/tunisair/',
- 'https://tunivisions.net/tag/tunisair/',
-'http://kapitalis.com/tunisie/tag/tunisair/',
+
+'https://www.leconomistemaghrebin.com/tag/topnet-tunisie/',
+'http://kapitalis.com/tunisie/tag/topnet/',
 'https://www.tustex.com/node/188/actualites',
-'https://www.webmanagercenter.com/tag/tunisair/',
-'https://www.businessnews.com.tn/tunisair-la-crise-de-trop,519,98646,3',
-'https://afrique.le360.ma/tunisie/economie/2019/02/05/24942-tunisair-en-crise-la-compagnie-revoit-ses-ambitions-la-baisse-24942',
-'https://africanmanager.com/malgre-la-crise-les-agents-de-tunisair-protestent-aujourdhui/',
-'https://www.lepoint.fr/afrique/tunisair-le-spectre-de-la-faillite-14-05-2020-2375514_3826.php',
+'https://www.webmanagercenter.com/tag/topnet/',
+'https://www.businessnews.com.tn/',
+'http://www.havasworldwide.tn/',
+      'https://www.rtx.com/'
+      'https://www.it-news.tn/tag/topnet/',
+      'http://www.theguiks.com/tag/topnet',
+      'http://www.letemps.com.tn/tags/topnet'
+      'https://www.tuitec.com/ar/tag/topnet/',
+      'https://www.tunisienumerique.com/',
+      'https://www.prosdelacom.com/',
+      'https://www.wiki.tn/topnet_123.html',
+      'https://www.tuniscope.com/',
+      'https://www.tekiano.com/',
+      'https://ween.tn/fiche/topnet',
+      'https://www.espacemanager.com/',
+      'https://africanmanager.com/',
+      'https://tn.kompass.com/',
+      'http://www.btpnet.com/home.htm',
+      'https://www.realites.com.tn/',
+      'https://www.ilboursa.com/',
+      'https://www.africanchallenges.com/',
+      'https://www.tunisietelecom.tn/Fr',
+      'https://www.tunisia-sat.com/forums/',
+      'https://www.plasticomnium.com/en/',
+
+'http://www.lepointtn.com/tag/topnet/?lang=fr',
+      'https://www.baya.tn/Mots-Clefs/topnet/',
+      'https://www.tunisietravail.net/',
+      'https://www.radioexpressfm.com/tag/topnet/'
 'https://lepetitjournal.com/tunis/actualites/covid-19-la-reouverture-des-frontieres-est-annoncee-officiellement-281966',
 'https://ar.lemaghreb.tn/',
 'http://www.alchourouk.com/',
@@ -124,26 +156,12 @@ urls=[
 'www.tuniscope.com',
 'www.wikipedia.org',
 'www.alchourouk.com',
-'www.opodo.fr',
-'www.topito.com',
-'www.fr.lastminute.com',
-'www.skyscanner.fr',
-'www.travelstore.tn',
-'www.destinationtunisie.info',
-'www.omeilleursprix.com',
-'www.bourse-des-vols.com',
-'www.govoyages.com',
-'www.edreams.fr',
-'www.air-journal.fr',
-'www.air-journal.fr',
-'www.vol-retarde.be',
-'www.google.tn/maps',
-'www.voyagesetvagabondages.com',
+
 'https://www.medias24.com/',
-'https://www.vol-direct.fr/',
-'https://simpleflying.com/',
+
+
 'https://mondenews.net/fr/',
-'https://voyage.gc.ca/',
+
 'https://www.icao.int/Pages/default.aspx',
 'www.tayara.tn',
 'www.alibaba.com',
@@ -176,19 +194,11 @@ urls=[
 'www.businessnews.com.tn',
 'www.baidu.com',
 'www.lufthansa.com',
-'www.voyagespirates.com',
-'www.lechotouristique.com',
-'www.tripadvisor.fr',
-'www.tourismag.com',
+
 'www.espacemanager.com',
-'www.bravofly.fr',
-'www.tourhebdo.com',
-'www.bvm.com.tn',
-'www.cmf.tn',
-'www.tripstyleblog.com',
-'www.tourisminfo.com.tn',
+
 'www.universnews.tn',
-'www.books.google.tn',
+
 'www.tunisie-tribune.com',
 'www.tounesnanews.com',
 'https://www.jetcost.com/?fbclid=IwAR3B-Bo9S2MCitDIUM-QEBL4WsyIvKe8VkDQ-prqZ6u_vwZ46LV6LHf5O7U',
@@ -203,7 +213,7 @@ urls=[
 ]
 
 
-# In[377]:
+# In[407]:
 
 
 
@@ -233,10 +243,11 @@ def scrap():
     df = pd.DataFrame (data, columns=['url', 'text','date'])
     df = df.drop_duplicates(subset='text', keep='first')
     df=df.sort_values(by = 'date',ascending=False)
+    df=df.reset_index()
     return df
 
 
-# In[378]:
+# In[408]:
 
 
 while 1:
